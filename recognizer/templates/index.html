@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf" content="{{csrf_token}}">
+    <title>Upload Image</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #202020;
+            color: white;
+        }
+
+        #container {
+            text-align: center;
+        }
+
+        #image-input {
+            margin: 20px;
+            font-size: 16px;
+            padding: 10px;
+        }
+
+        #image-preview {
+            margin: 20px;
+            max-width: 300px;
+            max-height: 300px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+        }
+
+        #submit-button {
+            padding: 10px 20px;
+            background-color: #1565c0;
+            color: white;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <input type="file" id="image-input" accept="image/*" capture="camera">
+        <br>
+        <img id="image-preview" src="" alt="Preview" style="display:none;">
+        <br>
+        <button id="submit-button">Recognize Digit</button>
+    </div>
+
+    <script>
+        const imageInput = document.getElementById('image-input');
+        const imagePreview = document.getElementById('image-preview');
+        const submitButton = document.getElementById('submit-button');
+
+        // When user selects an image, show a preview
+        imageInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    imagePreview.src = event.target.result;
+                    imagePreview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Submit the image to the backend when the button is clicked
+        submitButton.addEventListener('click', () => {
+            const file = imageInput.files[0];
+            if (file) {
+                const formData = new FormData();
+                formData.append('image', file);
+
+                fetch('/submit-image/', {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': document.querySelector('meta[name="csrf"]').getAttribute('content')
+                    },
+                    body: formData
+                })
+                .then((response) => response.json())
+                .then((data) => {
+                    alert(`Recognized digit is: ${data.digit}`);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+            } else {
+                alert('Please select an image first.');
+            }
+        });
+    </script>
+</body>
+</html>

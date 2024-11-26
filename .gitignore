@@ -1,0 +1,65 @@
+# Python bytecode files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Django migrations
+*/migrations/*
+!*/migrations/__init__.py
+
+# Local environment files
+*.env
+*.venv
+.env/
+.venv/
+venv/
+ENV/
+env/
+*.bak
+
+# Database files
+db.sqlite3
+
+# Logs
+*.log
+
+# Static files
+/static/
+
+# Media files
+/media/
+
+# Coverage reports
+.coverage
+.coverage.*
+nosetests.xml
+coverage.xml
+*.cover
+
+# IDE or text editor specific files
+.vscode/
+.idea/
+
+# Python virtual environment directories
+venv/
+*.egg-info/
+.eggs/
+
+# Test and runtime files
+*.log
+*.pot
+*.mo
+
+# Django secret key
+secret_key.txt
+
+# MySQL/PostgreSQL databases
+*.sql
+*.db
+
+# Django Debug Toolbar cache
+.django_debug_toolbar/
+
+# PyCharm
+.idea/
