@@ -18,7 +18,7 @@ Pygments==2.14.0  # Updated for modern Python
 requests==2.31.0  # Compatible with Python 3.10
 rich==13.4.2  # Compatible with Python 3.10
 setuptools==67.6.0  # Stable for Python 3.10
-sqlparse==0.5.3  # Compatible with Django
+sqlparse==0.5.2  # Correct version available in PyPI
 tensorflow==2.10.1  # Last version officially supporting Python 3.10
 tzdata==2023.3  # Timezone database for Django
 urllib3==2.0.6  # Compatible with requests and Python 3.10
