@@ -63,3 +63,5 @@ secret_key.txt
 
 # PyCharm
 .idea/
+newenv/
+/NumberRecognitionSystem.ipynb

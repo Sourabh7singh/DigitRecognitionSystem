@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-i)kk1cez+%ayl&2nai+%6$cmt5g!e^dkrq@(y_rl_#xlk4l1rr
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://digitrecognitionsystem.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['digitrecognitionsystem.onrender.com', 'localhost', '127.0.0.1']
 
 
 
